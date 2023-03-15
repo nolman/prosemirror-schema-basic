@@ -113,13 +113,14 @@ export const marks = {
   link: {
     attrs: {
       href: {},
-      title: {default: null}
+      title: {default: null},
+      target: {default: "_blank"},
     },
     inclusive: false,
     parseDOM: [{tag: "a[href]", getAttrs(dom: HTMLElement) {
-      return {href: dom.getAttribute("href"), title: dom.getAttribute("title")}
+      return {href: dom.getAttribute("href"), title: dom.getAttribute("title"), target: dom.getAttribute("title")}
     }}],
-    toDOM(node) { let {href, title} = node.attrs; return ["a", {href, title}, 0] }
+    toDOM(node) { let {href, title, target} = node.attrs; return ["a", {href, title, target}, 0] }
   } as MarkSpec,
 
   /// An emphasis mark. Rendered as an `<em>` element. Has parse rules
